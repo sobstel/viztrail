@@ -12,3 +12,5 @@ ActiveStorage.start()
 
 import "controllers"
 import "@hotwired/turbo-rails"
+
+import "application.scss"
