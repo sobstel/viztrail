@@ -1,4 +1,4 @@
 class TrailsController < ApplicationController
-  def index
+  def new
   end
 end
