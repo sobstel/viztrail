@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "VizTrail",
+    "name": "viztrail",
     "slug": "viztrail",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,8 +17,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "dev.sobstel.viztrail"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
