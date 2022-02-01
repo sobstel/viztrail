@@ -29,6 +29,10 @@
       },
     ],
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
-    "react/style-prop-object": [1, { "allow": ["StatusBar"] }]
+    "react/style-prop-object": [1, { "allow": ["StatusBar"] }],
+    "sort-imports": ["error", {
+      "ignoreCase": true,
+      "ignoreDeclarationSort": true
+    }]
   }
 }

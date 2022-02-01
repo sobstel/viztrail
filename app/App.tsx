@@ -1,7 +1,7 @@
 import React from 'react';
-import { NativeBaseProvider, extendTheme } from 'native-base';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
+import { extendTheme, NativeBaseProvider } from 'native-base';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Navigator from './screens/Navigator';
 
 const Stack = createNativeStackNavigator();
