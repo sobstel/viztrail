@@ -27,12 +27,15 @@
     "react-native-unimodules": "~0.15.0",
     "react-native-web": "0.17.1",
     "styled-components": "^5.3.0",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "togeojson": "^0.16.0",
+    "turf": "^3.0.14"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
+    "@types/turf": "^3.5.32",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
     "eslint": "^7.32.0",

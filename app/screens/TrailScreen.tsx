@@ -1,36 +1,56 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Box } from 'native-base';
+import { Box, Text } from 'native-base';
 import MapView, { Geojson } from 'react-native-maps';
-import sampletrack from './_sampletrack.temp.geojson.json';
+import turf from 'turf';
+import track from './_jurathlon21.json';
 
 export default function TrailScreen() {
+  const center = turf.center(track.features[0].geometry as any);
+  const envelope = turf.envelope(track.features[0].geometry as any);
+  const distX = turf.distance(
+    turf.point(envelope.geometry.coordinates[0][0]),
+    turf.point(envelope.geometry.coordinates[0][1]),
+    'degrees',
+  );
+  const distY = turf.distance(
+    turf.point(envelope.geometry.coordinates[0][2]),
+    turf.point(envelope.geometry.coordinates[0][3]),
+    'degrees',
+  );
+
   return (
     <Box flex="1">
-      <MapView
-        region={{
-          latitude: sampletrack.features[0].geometry.coordinates[0][1],
-          longitude: sampletrack.features[0].geometry.coordinates[0][0],
-          latitudeDelta: 0.1922,
-          longitudeDelta: 0.1421,
-        }}
-        mapType="hybrid"
-        scrollEnabled
-        style={{ ...StyleSheet.absoluteFillObject }}
-        showsBuildings
-        showsCompass
-        showsPointsOfInterest
-        showsScale
-        zoomEnabled
-        zoomTapEnabled
-      >
-        <Geojson
-          geojson={sampletrack as any}
-          strokeColor="red"
-          fillColor="green"
-          strokeWidth={2}
-        />
-      </MapView>
+      <Box flex="1">
+        <MapView
+          initialRegion={{
+            latitude: center.geometry.coordinates[1],
+            longitude: center.geometry.coordinates[0],
+            latitudeDelta: distY + 0.033,
+            longitudeDelta: distX + 0.033,
+          }}
+          mapType="hybrid"
+          scrollEnabled
+          style={{ ...StyleSheet.absoluteFillObject }}
+          showsBuildings={false}
+          showsCompass
+          showsPointsOfInterest
+          showsScale
+          zoomEnabled
+          zoomTapEnabled
+        >
+          <Geojson
+            geojson={track as any}
+            strokeColor="red"
+            fillColor="green"
+            strokeWidth={4}
+            onPress={event => console.log({ event })}
+          />
+        </MapView>
+      </Box>
+      <Box>
+        <Text>text</Text>
+      </Box>
     </Box>
   );
 }
