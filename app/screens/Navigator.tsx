@@ -26,7 +26,7 @@ export default function Navigator() {
         <Stack.Screen
           name="Trail"
           component={TrailScreen}
-          options={{ title: 'Trail' }}
+          options={{ title: 'Trail', headerTransparent: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
