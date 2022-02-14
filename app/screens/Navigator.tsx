@@ -1,13 +1,12 @@
 import React from 'react';
 import { Button, Center, Text } from 'native-base';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { HeaderBackButton } from '@react-navigation/elements';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+// import { HeaderBackButton } from '@react-navigation/elements';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import HomeScreen from './HomeScreen';
-import TrailScreen from './TrailScreen';
+import MainScreen from './MainScreen';
+// import TrailScreen from './TrailScreen';
 
-function HomeEmptyScreen() {
+function HomeScreen() {
   const navigation: any = useNavigation();
 
   return (
@@ -18,7 +17,7 @@ function HomeEmptyScreen() {
   );
 }
 
-function TrailEmptyScreen() {
+function EmptyScreen() {
   return (
     <Center>
       <Text>under construction</Text>
@@ -26,69 +25,22 @@ function TrailEmptyScreen() {
   );
 }
 
-const HomeTab = createBottomTabNavigator();
+const MainStack = createNativeStackNavigator();
 
-function HomeTabs() {
-  return (
-    <HomeTab.Navigator screenOptions={{ headerShown: false }}>
-      <HomeTab.Screen name="AllTrails" component={HomeEmptyScreen} />
-      <HomeTab.Screen name="FavTrails" component={HomeEmptyScreen} />
-      <HomeTab.Screen name="MyTrails" component={HomeEmptyScreen} />
-    </HomeTab.Navigator>
-  );
-}
+//             headerLeft: () => (
+//               <HeaderBackButton onPress={() => navigation.goBack(null)} />
+//             ),
 
-const TrailTab = createBottomTabNavigator();
-
-function TrailTabs() {
+export default function Navigator() {
   const navigation: any = useNavigation();
 
   return (
-    <TrailTab.Navigator screenOptions={{ headerShown: false }}>
-      <TrailTab.Screen
-        name="TrailMap"
-        component={TrailScreen}
-        options={{
-          title: 'Map',
-          headerLeft: () => (
-            <HeaderBackButton onPress={() => navigation.goBack(null)} />
-          ),
-        }}
-      />
-      <TrailTab.Screen
-        name="TrailPeople"
-        component={TrailEmptyScreen}
-        options={{
-          title: 'People',
-        }}
-      />
-      <TrailTab.Screen
-        name="TrailMe"
-        component={TrailEmptyScreen}
-        options={{
-          title: 'Me',
-        }}
-      />
-    </TrailTab.Navigator>
-  );
-}
-
-//
-
-const MainStack = createNativeStackNavigator();
-
-export default function Navigator() {
-  return (
     <NavigationContainer>
       <MainStack.Navigator>
-        <MainStack.Screen
-          name="Home"
-          component={HomeTabs}
-          options={{ title: 'Trails' }}
-        />
-        <MainStack.Screen name="Trail" component={TrailTabs} />
-        {/* TODO: UserTrail screen */}
-        {/* TODO: Settings screen */}
+        <MainStack.Screen name="Home" component={MainScreen} />
+        <MainStack.Screen name="Trails" component={EmptyScreen} />
+        <MainStack.Screen name="Trail" component={EmptyScreen} />
+        <MainStack.Screen name="Settings" component={EmptyScreen} />
       </MainStack.Navigator>
     </NavigationContainer>
   );
